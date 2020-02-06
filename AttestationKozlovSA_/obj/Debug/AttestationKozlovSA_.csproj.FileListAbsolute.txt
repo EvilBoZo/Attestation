@@ -1,0 +1,7 @@
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\AttestationKozlovSA_\bin\Debug\AttestationKozlovSA_.exe.config
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\AttestationKozlovSA_\bin\Debug\AttestationKozlovSA_.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\AttestationKozlovSA_\bin\Debug\AttestationKozlovSA_.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\AttestationKozlovSA_\obj\Debug\AttestationKozlovSA_.csprojAssemblyReference.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\AttestationKozlovSA_\obj\Debug\AttestationKozlovSA_.csproj.CoreCompileInputs.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\AttestationKozlovSA_\obj\Debug\AttestationKozlovSA_.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\AttestationKozlovSA_\obj\Debug\AttestationKozlovSA_.pdb
