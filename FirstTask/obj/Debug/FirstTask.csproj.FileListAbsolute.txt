@@ -1,0 +1,14 @@
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\Phones\obj\Debug\FirstTask.csproj.CoreCompileInputs.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\Phones\bin\Debug\Phones.exe.config
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\Phones\bin\Debug\Phones.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\Phones\bin\Debug\Phones.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\Phones\obj\Debug\Phones.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\Phones\obj\Debug\Phones.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\Phones\obj\Debug\FirstTask.csprojAssemblyReference.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\FirstTask\bin\Debug\Phones.exe.config
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\FirstTask\bin\Debug\Phones.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\FirstTask\bin\Debug\Phones.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\FirstTask\obj\Debug\FirstTask.csprojAssemblyReference.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\FirstTask\obj\Debug\FirstTask.csproj.CoreCompileInputs.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\FirstTask\obj\Debug\Phones.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\FirstTask\obj\Debug\Phones.pdb

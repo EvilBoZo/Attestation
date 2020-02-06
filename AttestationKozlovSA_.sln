@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttestationKozlovSA_", "AttestationKozlovSA_\AttestationKozlovSA_.csproj", "{E6D2DC9C-B4DB-43CB-B06F-0B0CD22A53D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstTask", "..\AttestationKozlovSA\FirstTask\FirstTask.csproj", "{87511BBD-7224-43DD-AC31-086E95B2033A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstTask", "FirstTask\FirstTask.csproj", "{87511BBD-7224-43DD-AC31-086E95B2033A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondTask", "..\AttestationKozlovSA\SecondTask\SecondTask.csproj", "{27495178-0589-4BCE-B364-A10C701BF4FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondTask", "SecondTask\SecondTask.csproj", "{27495178-0589-4BCE-B364-A10C701BF4FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirdTask", "..\AttestationKozlovSA\ThirdTask\ThirdTask.csproj", "{12271FCE-9F61-46C3-B1C7-C8BC5D72B10E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirdTask", "ThirdTask\ThirdTask.csproj", "{12271FCE-9F61-46C3-B1C7-C8BC5D72B10E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

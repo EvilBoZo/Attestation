@@ -1,0 +1,11 @@
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\obj\Debug\SecondTask.csproj.CoreCompileInputs.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\bin\Debug\SecondTask.exe.config
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\bin\Debug\SecondTask.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\bin\Debug\SecondTask.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\bin\Debug\Phones.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\bin\Debug\Phones.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\bin\Debug\Phones.exe.config
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\obj\Debug\SecondTask.csprojAssemblyReference.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\obj\Debug\SecondTask.csproj.CopyComplete
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\obj\Debug\SecondTask.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\SecondTask\obj\Debug\SecondTask.pdb
