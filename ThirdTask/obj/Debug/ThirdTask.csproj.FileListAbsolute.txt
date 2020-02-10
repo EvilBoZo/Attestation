@@ -6,3 +6,11 @@ C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\AttestationKozlovSA\obj\Debu
 C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\AttestationKozlovSA\obj\Debug\ThirdTask.csproj.CoreCompileInputs.cache
 C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\AttestationKozlovSA\obj\Debug\AttestationKozlovSA.exe
 C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA\AttestationKozlovSA\obj\Debug\AttestationKozlovSA.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\bin\Debug\AttestationKozlovSA.exe.config
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\bin\Debug\AttestationKozlovSA.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\bin\Debug\AttestationKozlovSA.pdb
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\obj\Debug\ThirdTask.csprojAssemblyReference.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\obj\Debug\ThirdTask.csproj.ResolveComReference.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\obj\Debug\ThirdTask.csproj.CoreCompileInputs.cache
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\obj\Debug\AttestationKozlovSA.exe
+C:\Users\Kozlov_SA\source\repos\AttestationKozlovSA_\ThirdTask\obj\Debug\AttestationKozlovSA.pdb

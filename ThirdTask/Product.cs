@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ThirdTask
 {
@@ -14,22 +11,21 @@ namespace ThirdTask
         /// <summary>
         /// Название товара.
         /// </summary>
-        internal string Name { get; set; }
+        internal string Name { get; }
 
         /// <summary>
         /// Цена товара.
         /// </summary>
-        internal int Price { get; set; }
+        internal int Price { get; }
+
+        internal static IEnumerable<Product> SelectProducts(int price, IEnumerable<Product> products)
+        {
+            return products.Where(product => product.Price < price).OrderBy(product => product.Name);
+        }
 
         /// <summary> 
-        /// Создать экземпляр класса на основе переданных значений названия и цены. 
+        /// Конструктор. 
         /// </summary> 
-        /// <param name="name">Название товара.</param> 
-        /// <param name="price">Цена товара.</param> 
-        /// <remarks>
-        /// Данный конструктор позволяет при создании экземпляра класса 
-        /// сразу проинициализировать его значениями указанных названия и цены.
-        /// </remarks> 
         internal Product(string name, int price)
         {
             this.Name = name;

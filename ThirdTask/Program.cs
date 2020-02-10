@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ThirdTask
 {
@@ -11,6 +8,7 @@ namespace ThirdTask
         static void Main(string[] args)
         {
             // Создание и заполнение списка товаров тестовыми данными
+            ExcelTable excelTable = new ExcelTable();
             List<Product> products = new List<Product>();
             for (int i = 10; i > 0; i--)
             {
@@ -19,7 +17,7 @@ namespace ThirdTask
 
             // Проверка корректности работы класса ExcelTable
             Console.WriteLine("Введите стоимость:");
-            ExcelTable.CreateExcelTable(Convert.ToInt16(Console.ReadLine()), products);
+            excelTable.Create(Product.SelectProducts(Convert.ToInt16(Console.ReadLine()), products));
         }
     }
 }

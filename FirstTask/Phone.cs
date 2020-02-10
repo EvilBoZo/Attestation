@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace FirstTask
 {
@@ -16,17 +14,28 @@ namespace FirstTask
         /// <summary> 
         /// IMEI телефона. 
         /// </summary>
-        public string Imei { get; private set; }
+        public string Imei { get; }
 
         /// <summary> 
         /// Номер сим-карты. 
         /// </summary>
-        public string SimNumber { get; set; }
+        public string SimNumber { get; private set; }
 
         /// <summary> 
         /// Список контактов. 
         /// </summary>
-        public List<Contact> Contacts { get; private set; }
+        private readonly List<Contact> contacts = new List<Contact>();
+
+        /// <summary> 
+        /// Список контактов. 
+        /// </summary>
+        public IReadOnlyCollection<Contact> Contacts
+        {
+            get
+            {
+                return new ReadOnlyCollection<Contact>(this.contacts);
+            }
+        }
 
         #endregion
 
@@ -38,10 +47,19 @@ namespace FirstTask
         /// <param name="contact">Новый контакт.</param>
         public void AddContact(Contact contact)
         {
-            Contacts.Add(contact);
+            this.contacts.Add(contact);
         }
 
         /// <summary> 
+        /// Добавить сим-карту в телефон. 
+        /// </summary> 
+        /// <param name="simNumber">Номер сим-карты.</param>
+        public void AddSim(string simNumber)
+        {
+            this.SimNumber = simNumber;
+        }
+
+        /// <summary>   
         /// Осуществить звонок по набранному имени контаката или номеру телефона. 
         /// </summary> 
         /// <param name="contactData">Имя контакта или номер телефона.</param>
@@ -53,22 +71,22 @@ namespace FirstTask
                 {
                     Console.WriteLine("Вызов {0}", contact.Name);
                     // Набираем первый номер из списка возможных для найденного контакта
-                    Called?.Invoke(this, new CallEventsArgs(this.Imei, contact.Numbers[0]));
+                    this.Called?.Invoke(this, new CallEventsArgs(this.Imei, contact.GetNumber(1)));
                     return;
                 }
             }
-
             Console.WriteLine("Вызов {0}", contactData);
-            Called?.Invoke(this, new CallEventsArgs(this.Imei, contactData));
+            this.Called?.Invoke(this, new CallEventsArgs(this.Imei, contactData));
         }
 
         /// <summary> 
         /// Установить соединение с базовой станцией станцией. 
         /// </summary> 
         /// <param name="dockStation">Базовая станция.</param> 
-        public void ConnectToDockStation(DockStation dockStation)
+        protected virtual void ConnectToDockStation(DockStation dockStation)
         {
             dockStation.RegisterPhone(this.Imei);
+            this.Called += dockStation.DataProcessing;
         }
 
         #endregion
@@ -80,26 +98,32 @@ namespace FirstTask
         /// </summary> 
         /// <param name="Sender">Источник события.</param> 
         /// <param name="e">Параметры события.</param>
-        public delegate void CallHandler(object sender, CallEventsArgs e);
+        protected delegate void EventHandler(object sender, CallEventsArgs e);
 
         /// <summary> 
         /// Событие на осуществление звонка. 
         /// </summary> 
         /// <remarks>Возникает при осуществлении звонка.</remarks> 
-        public event CallHandler Called;
+        protected event EventHandler Called;
 
         #endregion
 
         #region Конструкторы
 
         /// <summary> 
-        /// Создать экземпляр класса на основе переданного значения IMEI. 
+        /// Конструктор. 
         /// </summary> 
-        /// <param name="imei">IMEI устройства.</param>
         public Phone(string imei)
         {
             this.Imei = imei;
-            this.Contacts = new List<Contact>();
+        }
+
+        /// <summary> 
+        /// Конструктор. 
+        /// </summary> 
+        public Phone(string imei, DockStation dockStation) : this(imei)
+        {
+            this.ConnectToDockStation(dockStation);
         }
 
         #endregion

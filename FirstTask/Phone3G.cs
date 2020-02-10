@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FirstTask
+﻿namespace FirstTask
 {
     /// <summary> 
     /// Класс "Телефон с 3G". 
@@ -14,26 +8,33 @@ namespace FirstTask
         /// <summary> 
         /// Специальное свойство для телефона с 3G. 
         /// </summary>
-        public string PropertyFor3G { get; set; }
+        public string PropertyFor3G { get; }
 
         /// <summary> 
         /// Установить соединение с базовой станцией станцией c 3G. 
         /// </summary> 
         /// <param name="dockStation3G">Базовая станция.</param> 
-        public void ConnectToDockStation(DockStation3G dockStation3G)
+        protected override void ConnectToDockStation(DockStation dockStation)
         {
+            DockStation3G dockStation3G = (DockStation3G)dockStation;
             dockStation3G.RegisterPhone(this.Imei, this.PropertyFor3G);
+            this.Called += dockStation3G.DataProcessing;
         }
 
         /// <summary> 
-        /// Создать экземпляр класса на основе переданного значений IMEI
-        /// и специального свойства для телефона с 3G. 
-        /// </summary> 
-        /// <param name="imei">IMEI устройства.</param>
-        /// <param name="propertyFor3G">Специальное свойство для телефона с 3G.</param>
+        /// Конструктор. 
+        /// </summary>
         public Phone3G(string imei, string propertyFor3G) : base(imei)
         {
             this.PropertyFor3G = propertyFor3G;
+        }
+
+        /// <summary> 
+        /// Конструктор. 
+        /// </summary>
+        public Phone3G(string imei, DockStation dockStation, string propertyFor3G) : this(imei, propertyFor3G)
+        {
+            this.ConnectToDockStation(dockStation);
         }
     }
 }

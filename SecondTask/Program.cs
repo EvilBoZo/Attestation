@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FirstTask;
-using System.Reflection;
 
 namespace SecondTask
 {
@@ -18,50 +13,72 @@ namespace SecondTask
             Phone nullPhone = null;
             Phone3G phone3G = new Phone3G("123456789123456", "123456789123456");
             DockStation dockStation = new DockStation();
+            
+            // Тестовые вызовы функции получения информации об объектах
+            Console.WriteLine(GetObjectsInfo(firstPhone, secondPhone));
+            Console.WriteLine(GetObjectsInfo(firstPhone, phone3G));
+            Console.WriteLine(GetObjectsInfo(firstPhone, new object()));
 
-            // Определение функции получения информации об объектах
-            void GetObjectsInfo(object first, object second)
+            Console.WriteLine("Укажите тип проверки (1 - родство неопределено, 2 - не экземпляр класса, 3 - null):");
+            string chekType = Console.ReadLine().ToString();
+                
+            if (chekType == "1")
             {
-                try
-                {
-                    try
-                    {
-                        Type firstType = first.GetType();
-                        Type secondType = second.GetType();
-                        Type firstBaseType = firstType.BaseType;
-                        Type secondBaseType = secondType.BaseType;
-
-                        if (firstType == secondType)
-                            Console.WriteLine("Оба переданных объекта являются экземлярами класса {0}", firstType.Name);
-                        else if (firstBaseType == secondType)
-                            Console.WriteLine("Класс {0} является предком класса {1}", secondType.Name, firstType.Name);
-                        else if (secondBaseType == firstType)
-                            Console.WriteLine("Класс {0} является предком класса {1}", firstType.Name, secondType.Name);
-                        else
-                            throw new ArgumentException();
-                    }
-                    catch (NullReferenceException)
-                    {
-                        throw new ArgumentNullException();
-                    }
-                }
-                catch (ArgumentNullException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                Console.WriteLine(GetObjectsInfo(firstPhone, dockStation));
+            }
+            else if (chekType == "2")
+            {
+                Console.WriteLine(GetObjectsInfo(firstPhone, 10));
+            }
+            else if (chekType == "3")
+            {
+                Console.WriteLine(GetObjectsInfo(firstPhone, nullPhone));
+            }
+            else
+            {
+                Console.WriteLine("Тип проверки указан неверно");
             }
 
-            // Тестовые вызовы функции получения информации об объектах
-            GetObjectsInfo(firstPhone, secondPhone);
-            GetObjectsInfo(firstPhone, phone3G);
-            GetObjectsInfo(firstPhone, nullPhone);
-            GetObjectsInfo(firstPhone, "text");
-            GetObjectsInfo(firstPhone, dockStation);
             Console.ReadKey();
+        }
+
+        /// <summary> 
+        /// Определить степень родства двух объектов. 
+        /// </summary> 
+        /// <param name="first">Первый объект.</param>
+        /// <param name="second">Второй объект.</param>
+        static string GetObjectsInfo(object first, object second)
+        {
+            if (first == null)
+                throw new ArgumentNullException("first", "Входной параметр равен null");
+            else if (second == null)
+                throw new ArgumentNullException("second", "Входной параметр равен null");
+
+            Type firstType = first.GetType();
+            Type secondType = second.GetType();
+            Type firstBaseType = firstType.BaseType;
+            Type secondBaseType = secondType.BaseType;
+
+            if (firstType == secondType)
+            {
+                return "Оба переданных объекта являются экземлярами класса " + firstType.Name;
+            }
+            else if (firstBaseType == secondType)
+            {
+                return "Класс " + secondType.Name + " является предком класса " + firstType.Name;
+            }
+            else if (secondBaseType == firstType)
+            {
+                return "Класс " + firstType.Name + " является предком класса " + secondType.Name;
+            }
+            else if (!firstType.IsClass || !secondType.IsClass)
+            {
+                throw new ArgumentException("Входной параметр не является экземпляром класса");
+            }
+            else
+            {
+                throw new ArgumentException("Родство входных параметров определить невозможно");
+            }
         }
     }
 }

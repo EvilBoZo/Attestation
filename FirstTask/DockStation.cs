@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FirstTask
 {
@@ -14,15 +11,23 @@ namespace FirstTask
         /// <summary> 
         /// Список зарегестрированных IMEI. 
         /// </summary>
-        public List<string> Imeis { get; protected set; } = new List<string>();
+        protected List<string> imeis = new List<string>();
 
         /// <summary> 
         /// Зарегистрировать телефон с полученным IMEI. 
         /// </summary> 
         /// <param name="imei">IMEI устройства.</param>
-        public void RegisterPhone(string imei)
+        internal void RegisterPhone(string imei)
         {
-            this.Imeis.Add(imei);
+            foreach (string currentImei in imeis)
+            {
+                if (currentImei == imei)
+                {
+                    Console.WriteLine("Данный телефон уже зарегистрирован");
+                    return;
+                }
+            }
+            this.imeis.Add(imei);
             Console.WriteLine("Зарегистрирован телефон");
         }
 
@@ -31,9 +36,9 @@ namespace FirstTask
         /// </summary> 
         /// <param name="Sender">Источник события.</param> 
         /// <param name="e">Параметры события.</param>
-        public void DataProcessing(object sender, CallEventsArgs e)
+        internal void DataProcessing(object sender, CallEventsArgs e)
         {
-            foreach (string imei in this.Imeis)
+            foreach (string imei in this.imeis)
             {
                 if (imei == e.Imei)
                 {
