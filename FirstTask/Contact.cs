@@ -16,7 +16,7 @@ namespace FirstTask
         /// <summary> 
         /// Список номеров. 
         /// </summary>
-        private readonly List<string> numbers = new List<string>();
+        private List<string> numbers = new List<string>();
 
         /// <summary> 
         /// Список номеров. 
@@ -59,6 +59,8 @@ namespace FirstTask
         /// <summary> 
         /// Конструктор.
         /// </summary> 
+        /// <param name="name">Название.</param> 
+        /// <param name="numbers">Список номеров.</param> 
         public Contact(string name, List<string> numbers)
         {
             this.Name = name;

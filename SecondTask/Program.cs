@@ -13,30 +13,41 @@ namespace SecondTask
             Phone nullPhone = null;
             Phone3G phone3G = new Phone3G("123456789123456", "123456789123456");
             DockStation dockStation = new DockStation();
-            
-            // Тестовые вызовы функции получения информации об объектах
-            Console.WriteLine(GetObjectsInfo(firstPhone, secondPhone));
-            Console.WriteLine(GetObjectsInfo(firstPhone, phone3G));
-            Console.WriteLine(GetObjectsInfo(firstPhone, new object()));
 
-            Console.WriteLine("Укажите тип проверки (1 - родство неопределено, 2 - не экземпляр класса, 3 - null):");
-            string chekType = Console.ReadLine().ToString();
-                
-            if (chekType == "1")
+            // Тестовые вызовы функции получения информации об объектах
+            try
             {
-                Console.WriteLine(GetObjectsInfo(firstPhone, dockStation));
+                Console.WriteLine(GetObjectsInfo(firstPhone, secondPhone));
+                Console.WriteLine(GetObjectsInfo(firstPhone, phone3G));
+                Console.WriteLine(GetObjectsInfo(phone3G, new object()));
+
+                Console.WriteLine("Укажите тип проверки (1 - родство неопределено, 2 - не экземпляр класса, 3 - null):");
+                string chekType = Console.ReadLine().ToString();
+
+                if (chekType == "1")
+                {
+                    Console.WriteLine(GetObjectsInfo(firstPhone, dockStation));
+                }
+                else if (chekType == "2")
+                {
+                    Console.WriteLine(GetObjectsInfo(firstPhone, 10));
+                }
+                else if (chekType == "3")
+                {
+                    Console.WriteLine(GetObjectsInfo(firstPhone, nullPhone));
+                }
+                else
+                {
+                    Console.WriteLine("Тип проверки указан неверно");
+                }
             }
-            else if (chekType == "2")
+            catch (ArgumentNullException ex)
             {
-                Console.WriteLine(GetObjectsInfo(firstPhone, 10));
+                Console.WriteLine(ex.Message);
             }
-            else if (chekType == "3")
+            catch (ArgumentException ex)
             {
-                Console.WriteLine(GetObjectsInfo(firstPhone, nullPhone));
-            }
-            else
-            {
-                Console.WriteLine("Тип проверки указан неверно");
+                Console.WriteLine(ex.Message);
             }
 
             Console.ReadKey();
@@ -50,9 +61,9 @@ namespace SecondTask
         static string GetObjectsInfo(object first, object second)
         {
             if (first == null)
-                throw new ArgumentNullException("first", "Входной параметр равен null");
+                throw new ArgumentNullException(nameof(first));
             else if (second == null)
-                throw new ArgumentNullException("second", "Входной параметр равен null");
+                throw new ArgumentNullException(nameof(second));
 
             Type firstType = first.GetType();
             Type secondType = second.GetType();
@@ -65,9 +76,17 @@ namespace SecondTask
             }
             else if (firstBaseType == secondType)
             {
-                return "Класс " + secondType.Name + " является предком класса " + firstType.Name;
+                return "Класс " + secondType.Name + " является непосредственным предком класса " + firstType.Name;
             }
             else if (secondBaseType == firstType)
+            {
+                return "Класс " + firstType.Name + " является непосредственным предком класса " + secondType.Name;
+            }
+            else if (firstType.IsSubclassOf(secondType))
+            {
+                return "Класс " + secondType.Name + " является предком класса " + firstType.Name;
+            }
+            else if (secondType.IsSubclassOf(firstType))
             {
                 return "Класс " + firstType.Name + " является предком класса " + secondType.Name;
             }

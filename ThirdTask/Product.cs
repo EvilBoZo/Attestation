@@ -18,14 +18,11 @@ namespace ThirdTask
         /// </summary>
         internal int Price { get; }
 
-        internal static IEnumerable<Product> SelectProducts(int price, IEnumerable<Product> products)
-        {
-            return products.Where(product => product.Price < price).OrderBy(product => product.Name);
-        }
-
         /// <summary> 
         /// Конструктор. 
         /// </summary> 
+        /// <param name="name">Название.</param> 
+        /// <param name="price">Цена.</param> 
         internal Product(string name, int price)
         {
             this.Name = name;

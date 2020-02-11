@@ -10,15 +10,9 @@
         /// </summary>
         public string PropertyFor3G { get; }
 
-        /// <summary> 
-        /// Установить соединение с базовой станцией станцией c 3G. 
-        /// </summary> 
-        /// <param name="dockStation3G">Базовая станция.</param> 
-        protected override void ConnectToDockStation(DockStation dockStation)
+        public override string GetRegInfo()
         {
-            DockStation3G dockStation3G = (DockStation3G)dockStation;
-            dockStation3G.RegisterPhone(this.Imei, this.PropertyFor3G);
-            this.Called += dockStation3G.DataProcessing;
+            return base.GetRegInfo() + this.PropertyFor3G;
         }
 
         /// <summary> 
@@ -32,7 +26,7 @@
         /// <summary> 
         /// Конструктор. 
         /// </summary>
-        public Phone3G(string imei, DockStation dockStation, string propertyFor3G) : this(imei, propertyFor3G)
+        public Phone3G(string imei, IRegisterable dockStation, string propertyFor3G) : this(imei, propertyFor3G)
         {
             this.ConnectToDockStation(dockStation);
         }

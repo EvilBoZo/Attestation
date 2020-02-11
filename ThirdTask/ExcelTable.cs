@@ -26,16 +26,15 @@ namespace ThirdTask
         /// <summary> 
         /// Создать таблицу Excel и заполнить ее отсортированными данными. 
         /// </summary> 
-        /// <param name="price">Значение цены товара для сортировки.</param> 
         /// <param name="products">Список товаров.</param> 
-        internal void Create(IEnumerable<Product> selectedProducts)
+        internal void Create(IEnumerable<Product> products)
         {
-            app.Visible = true;
-            book = app.Workbooks.Add(1);
-            sheet = book.Sheets[1];
+            this.app.Visible = true;
+            this.book = app.Workbooks.Add(1);
+            this.sheet = book.Sheets[1];
 
             int cellsCount = 0;
-            foreach (Product product in selectedProducts)
+            foreach (Product product in products)
             {
                 cellsCount++;
                 this.sheet.Cells[cellsCount, 1] = product.Name;
@@ -48,7 +47,7 @@ namespace ThirdTask
         /// </summary> 
         internal ExcelTable()
         {
-            app = new Application();
+            this.app = new Application();
         }
     }
 }

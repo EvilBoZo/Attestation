@@ -17,7 +17,7 @@ namespace ThirdTask
 
             // Проверка корректности работы класса ExcelTable
             Console.WriteLine("Введите стоимость:");
-            excelTable.Create(Product.SelectProducts(Convert.ToInt16(Console.ReadLine()), products));
+            excelTable.Create(ExcelQuery.SelectProducts(Convert.ToInt16(Console.ReadLine()), products));
         }
     }
 }

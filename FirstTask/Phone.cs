@@ -7,7 +7,7 @@ namespace FirstTask
     /// <summary> 
     /// Класс "Телефон". 
     /// </summary>
-    public class Phone
+    public class Phone : ICallable
     {
         #region Свойства
 
@@ -71,40 +71,33 @@ namespace FirstTask
                 {
                     Console.WriteLine("Вызов {0}", contact.Name);
                     // Набираем первый номер из списка возможных для найденного контакта
-                    this.Called?.Invoke(this, new CallEventsArgs(this.Imei, contact.GetNumber(1)));
+                    this.Called?.Invoke(this, new EventArgs());
                     return;
                 }
             }
             Console.WriteLine("Вызов {0}", contactData);
-            this.Called?.Invoke(this, new CallEventsArgs(this.Imei, contactData));
+            this.Called?.Invoke(this, new EventArgs());
         }
 
         /// <summary> 
         /// Установить соединение с базовой станцией станцией. 
         /// </summary> 
         /// <param name="dockStation">Базовая станция.</param> 
-        protected virtual void ConnectToDockStation(DockStation dockStation)
+        protected virtual void ConnectToDockStation(IRegisterable dockStation)
         {
-            dockStation.RegisterPhone(this.Imei);
-            this.Called += dockStation.DataProcessing;
+            dockStation.Register(this);
         }
-
+ 
         #endregion
 
-        #region Делегаты и события
+        #region ICallable
 
-        /// <summary> 
-        /// Делегат события на осуществление звонка. 
-        /// </summary> 
-        /// <param name="Sender">Источник события.</param> 
-        /// <param name="e">Параметры события.</param>
-        protected delegate void EventHandler(object sender, CallEventsArgs e);
+        public virtual string GetRegInfo()
+        {
+            return this.Imei;
+        }
 
-        /// <summary> 
-        /// Событие на осуществление звонка. 
-        /// </summary> 
-        /// <remarks>Возникает при осуществлении звонка.</remarks> 
-        protected event EventHandler Called;
+        public event EventHandler Called;
 
         #endregion
 
@@ -113,6 +106,7 @@ namespace FirstTask
         /// <summary> 
         /// Конструктор. 
         /// </summary> 
+        /// <param name="imei">Значение IMEI.</param> 
         public Phone(string imei)
         {
             this.Imei = imei;
@@ -121,7 +115,9 @@ namespace FirstTask
         /// <summary> 
         /// Конструктор. 
         /// </summary> 
-        public Phone(string imei, DockStation dockStation) : this(imei)
+        /// <param name="imei">Значение IMEI.</param> 
+        /// <param name="dockStation">Базовая станция.</param> 
+        public Phone(string imei, IRegisterable dockStation) : this(imei)
         {
             this.ConnectToDockStation(dockStation);
         }

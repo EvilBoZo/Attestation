@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CallEventsArgs.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="DockStation.cs" />
     <Compile Include="DockStation3G.cs" />
+    <Compile Include="ICallable.cs" />
+    <Compile Include="IRegisterable.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="Phone3G.cs" />
     <Compile Include="Program.cs" />

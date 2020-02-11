@@ -6,46 +6,48 @@ namespace FirstTask
     /// <summary> 
     /// Класс "Базовая станция". 
     /// </summary>
-    public class DockStation
+    public class DockStation : IRegisterable
     {
         /// <summary> 
-        /// Список зарегестрированных IMEI. 
+        /// Список зарегистрированных телефонов. 
         /// </summary>
-        protected List<string> imeis = new List<string>();
+        protected List<ICallable> phones = new List<ICallable>();
 
         /// <summary> 
-        /// Зарегистрировать телефон с полученным IMEI. 
+        /// Зарегистрировать телефон. 
         /// </summary> 
-        /// <param name="imei">IMEI устройства.</param>
-        internal void RegisterPhone(string imei)
+        /// <param name="phone">Телефон.</param>
+        public virtual void Register(ICallable phone)
         {
-            foreach (string currentImei in imeis)
+            foreach (ICallable currentPhone in this.phones)
             {
-                if (currentImei == imei)
+                if (currentPhone.GetRegInfo() == phone.GetRegInfo())
                 {
                     Console.WriteLine("Данный телефон уже зарегистрирован");
                     return;
                 }
             }
-            this.imeis.Add(imei);
+            this.phones.Add(phone);
+            phone.Called += DataProcessing;
             Console.WriteLine("Зарегистрирован телефон");
         }
 
         /// <summary> 
         /// Обработать исходящий звонок с зарегистрированного телефона. 
         /// </summary> 
-        /// <param name="Sender">Источник события.</param> 
-        /// <param name="e">Параметры события.</param>
-        internal void DataProcessing(object sender, CallEventsArgs e)
+        /// <param name="sender">Объект инициирующий событие.</param>
+        /// <param name="e">Данные события.</param>
+        protected void DataProcessing(object sender, EventArgs e)
         {
-            foreach (string imei in this.imeis)
+            foreach (ICallable phone in this.phones)
             {
-                if (imei == e.Imei)
+                if (sender == phone)
                 {
-                    Console.WriteLine("Идет обработка вызова {0}, телефоном с IMEI {1}", e.Number, e.Imei);
-                    break;
+                    Console.WriteLine("Обработка исходящего вызова");
+                    return;
                 }
             }
+            Console.WriteLine("Данный телефон не зарегистрирован");
         }
     }
 }
